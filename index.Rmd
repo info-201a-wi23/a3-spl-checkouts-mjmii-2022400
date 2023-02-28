@@ -5,82 +5,50 @@ output: html_document
 
 ### Introduction
 
-An introduction of the data and a description of the trends/books/items you are choosing to analyze (and why!)
+The following is taken from an ambitious collection of data: the complete checkout history of the Seattle Public Library this year. Just looking at the raw csv file makes you realize how much work there is that goes into tracking and maintaining a library system. And so... many... books. Seeing this wall of information made me curious of the technical aspect of maintaining a library. It's the 21st century, what sort of things are people checking out, and HOW are they checking them out. Suffice to say, that's the crux of this report I've made for A3. I want to see the "physical" side of the library system. What is the digital medium of these transactions, and how have they fluctated throughout the year?
 
 ### Summary Information
 
-Write a summary paragraph of findings that includes the 5 values calculated from your summary information R script
-
-These will likely be calculated using your DPLYR skills, answering questions such as:
-
-- What is the average number of checkouts for each item?
-- What is the month or year with the most/least checkouts for a book that you're interested in?
-- What is the month or year with the most/least checkouts for ebooks?
-- How has the number of print book checkouts changed over time?
-
-Feel free to calculate and report values that you find relevant.
-
+  To summarize the data before we go headfirst into it, here are some facts about it.
+  The most popular platform of checking out books is confirmed to be OverDrive, while the least popular is Horizon. As our charts will show later though, the gape between them isn't exactly an easy call.
+  The most popular format to checkout is a physical book. It's cool to see that things haven't changed completely. The monthly average of checkouts for 2022 was 4598496, with the most popular book is "Sea of Tranquility" by Emily St. John Mandel... an E-book. So maybe things have changed a lot.
+  
+  
 ### The Dataset
 
-- Who collected/published the data?  
-- What are the parameters of the data (dates, number of checkouts, kinds of books, etc.)?
-- How was the data collected or generated?  
-- Why was the data collected?  
-- What, if any, ethical questions do you need to consider when working with this data?  
-- What are possible limitations or problems with this data?   (at least 200 words)
+  This dataset comes from the Seattle Public Library, so straight from the source. Accuracy of the data, in this case, is a given. The data includes every aspect to know of each book: the number of checkouts, time of checkouts, genre, publisher, etc. It's an extremely sprawling parameter, but seeing that it's from directly the computer system of the SPL, that seems obvious.
+  The data was collected because, well, someone has to keep track of things. Especially in a government sector like this, everything needs to have oversight, and to do that every minue detail must be accounted for. There are no ethical dilemmas with this data, unless you feel like it's wrong for a library to know what books you've been checking out.
+  The only limitatioin I can see for this dataset is just its sheer size. My laptop takes forever to render some of the these graphs, and it sometimes crashes when I go to open up the csv to check some things. It's a bit "too" detailed, but honestly it's a luxury to be even able to complain about that sort of thing.
 
 
 ### First Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
+  This first chart visualizes the different mediums of "texts" checked out from the library. Librarys don't just have books anymore. They've caught up.
+  There are 5 different formats: books, e-books, movies, music, and audiobooks. What I've done is map out each one's popularity over the course of the year. Since the csv file only tells us the month of when something was checked out, that's the most accurate I can get this plot.
+  It's interesting how all 5 of these mediums are very popular. No format outshines the others. Each of them has their own audience, and althought there is fluctuation, they all are very active, which is cool to see.
+  There's also a strange spike in the beginning of the year, which I can't quite put my finger on. Perhaps lots of people go to library for their New Years resolution.
 
-The first chart that you will create and include will show the trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, warning = FALSE, code = readLines("chart1_example.R")}
+```{r, echo = F, code = readLines("chart1_example.R"), warning = F, message = F}
 ```
 
 ### Second Trends Over Time Chart
 
-Include a chart. Make sure to describe why you included the chart, and what patterns emerged
-
-The second chart that you will create and include will show another trend over time of your variable/topic/interest. Think carefully about what you want to communicate to your user (you may have to find relevant trends in the dataset first!). Here are some requirements to help guide your design:
-
-- Show more than one, but fewer than ~10 trends
-  - For example, two books, or 5 different mediums
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear - legend title
-In your .Rmd file, make sure to describe why you included the chart, and what patterns emerged
-
-When we say "clear" or "human readable" titles and labels, that means that you should not just display the variable name.
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
+  This next chart compares the two most popular forms of checking out in the library: Horizon vs OverDrive.
+  Library use digital platforms to reserve and rent out books now, and these two are the undisputed champions of their lane. However, I wanted to see how they would look pitted against one another. So this is what we get.
+  For the most part Horizon is the more popular choice, until suddenly we get an abrupt spike in September for OverDrive. Weird, but my guess is that students who are beginning their school year are often coaxed by their institution to go along with OverDrive, assuming it's the preferred choice offered and promoted by their place of education.
+  
+```{r, echo = F, code = readLines("chart2_example.R"), warning = F, message = F}
 ```
 
 ### Your Choice
 
-The last chart is up to you. It could be a line plot, scatter plot, histogram, bar plot, stacked bar plot, and more. Here are some requirements to help guide your design:
+  For the last one I decided to take a bit of a creative liberty and look at the 2 most checked out items from the SPL. With all the different mediums and platforms, I wanted to see what the fuss was about.
+  Ironically, the most popular item in the SPL are headphones... which is pretty funny. But it makes sense, considering the popularity of audiobooks that we saw in Chart 1. Second place is the novel "The House of Broken Angels", a moving multi-generational saga of a family of border-crossing immigrants who face hardship and strife to make their new country their home. So basically a Mexican-American "Pachinko". Sounds interesting.
+  And if you're wondering why this is conflicting with one of my facts from my summary, it's because Broken Angels is an audiobook, so it wasn't within my parameters for a book. Although the E-book somehow still weaseled its way in there.
 
-- You must have clear x and y axis labels
-- The chart needs a clear title 
-- You need a legend for your different line colors and a clear legend title
-
-Here's an example of how to run an R script inside an RMarkdown file:
-
-``````{r, echo = FALSE, code = readLines("chart2_example.R")}
+```{r, echo = F, code = readLines("Chart3.R"), warning = F, message = F}
 ```
+
+
 
 
